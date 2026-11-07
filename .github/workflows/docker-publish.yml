@@ -26,7 +26,7 @@ concurrency:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: arif-banai/musicbot
+  IMAGE_NAME: jonah-abraham-1/musicbot
 
 jobs:
   publish:
