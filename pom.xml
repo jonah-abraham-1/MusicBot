@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.arifbanai</groupId>
     <artifactId>JMusicBot</artifactId>
-    <version>0.7.1</version>
+    <version>0.7.2</version>
     <packaging>jar</packaging>
 
     <name>JMusicBot</name>
@@ -587,7 +587,7 @@
         <maven.compiler.release>25</maven.compiler.release>
 
         <!-- Reproducible builds -->
-        <project.build.outputTimestamp>2026-11-07T17:35:48Z</project.build.outputTimestamp>
+        <project.build.outputTimestamp>2026-11-09T16:05:37Z</project.build.outputTimestamp>
 
         <!-- Dependency versions -->
         <jda.version>6.4.2</jda.version>
