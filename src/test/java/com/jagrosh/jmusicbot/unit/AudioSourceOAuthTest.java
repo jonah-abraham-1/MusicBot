@@ -232,7 +232,7 @@ class AudioSourceOAuthTest {
             // With OAuth enabled
             Object[] oauthClients = (Object[]) buildClients.invoke(null, true);
             assertNotNull(oauthClients, "Should return clients for OAuth mode");
-            assertEquals(5, oauthClients.length, "OAuth mode should use 5 clients");
+            assertEquals(8, oauthClients.length, "OAuth mode should use 8 clients");
             
             // Verify client types
             assertEquals("AndroidVrWithThumbnail", oauthClients[0].getClass().getSimpleName(),
@@ -243,13 +243,26 @@ class AudioSourceOAuthTest {
                 "Third OAuth client should be <WebWithThumbnail>");
             assertEquals("Tv", oauthClients[3].getClass().getSimpleName(),
                 "Fourth OAuth client should be Tv");
-            assertEquals("TvHtml5SimplyWithThumbnail", oauthClients[4].getClass().getSimpleName(),
-                "Fifth OAuth client should be TvHtml5SimplyWithThumbnail");
+            assertEquals("MWebWithThumbnail", oauthClients[4].getClass().getSimpleName(),
+                "Fifth OAuth client should be <MWebWithThumbnail>");
+            assertEquals("WebWithThumbnail", oauthClients[5].getClass().getSimpleName(),
+                "Sixth OAuth client should be <WebWithThumbnail>");
+            assertEquals("AndroidVrWithThumbnail", oauthClients[6].getClass().getSimpleName(),
+                "Seventh OAuth client should be <AndroidVrWithThumbnail>");
+            assertEquals("TvHtml5SimplyWithThumbnail", oauthClients[7].getClass().getSimpleName(),
+                "Eighth OAuth client should be TvHtml5SimplyWithThumbnail");
             // Verify first 3 clients have playback disabled (metadataOnly)
             for (int i = 0; i < 3; i++) {
                 Client client = (Client) oauthClients[i];
                 assertFalse(client.getOptions().getPlayback(), 
                     String.format("OAuth client %d (%s) should have playback disabled", 
+                        i, client.getClass().getSimpleName()));
+            }
+            // Verify remaining clients have playback enabled for streaming
+            for (int i = 3; i < 8; i++) {
+                Client client = (Client) oauthClients[i];
+                assertTrue(client.getOptions().getPlayback(), 
+                    String.format("OAuth client %d (%s) should have playback enabled", 
                         i, client.getClass().getSimpleName()));
             }
         }

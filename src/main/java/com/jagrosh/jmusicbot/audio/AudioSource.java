@@ -292,8 +292,11 @@ public enum AudioSource
                 new AndroidVrWithThumbnail(metadataOnly), // metadata loading (non-embedded, non-OAuth)
                 new MWebWithThumbnail(metadataOnly),      // metadata loading (non-embedded, non-OAuth)
                 new WebWithThumbnail(metadataOnly),       // metadata loading (non-embedded, non-OAuth)
-                new Tv(),
-                new TvHtml5SimplyWithThumbnail()
+                new Tv(),                                 // Primary streaming: OAuth-compatible TV client
+                new MWebWithThumbnail(),                  // Fallback 1: Mobile Web streaming
+                new WebWithThumbnail(),                   // Fallback 2: Web streaming
+                new AndroidVrWithThumbnail(),             // Fallback 3: Android VR streaming
+                new TvHtml5SimplyWithThumbnail()          // Fallback 4: TV HTML5 Simply streaming
             };
         }
         // Clients are required even without OAuth to properly handle YouTube URLs
